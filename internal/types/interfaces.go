@@ -7,24 +7,27 @@ import (
 // This interface directly specifies two methods and
 // embeds two other interface types, one of which
 // is a type name and the other is a type literal.
-type ReadWriteCloser = interface {
-	Read(buf []byte) (n int, err error)
-	Write(buf []byte) (n int, err error)
-	error                      // a type name
-	interface{ Close() error } // a type literal
-}
+
+// type ReadWriteCloser = interface {
+// 	Read(buf []byte) (n int, err error)
+// 	Write(buf []byte) (n int, err error)
+// 	error                      // a type name
+// 	interface{ Close() error } // a type literal
+// }
 
 // This interface embeds an approximation type. Its type
 // set inlcudes all types whose underlying type is []byte.
-type AnyByteSlice = interface {
-	~[]byte
-}
+
+// type AnyByteSlice = interface {
+// 	~[]byte
+// }
 
 // This interface embeds a type union. Its type set inlcudes
 // 6 types: uint, uint8, uint16, uint32, uint64 and uintptr.
-type Unsigned = interface {
-	uint | uint8 | uint16 | uint32 | uint64 | uintptr
-}
+
+// type Unsigned = interface {
+// 	uint | uint8 | uint16 | uint32 | uint64 | uintptr
+// }
 
 type Aboutable interface {
 	About() string

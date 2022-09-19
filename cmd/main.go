@@ -8,65 +8,62 @@ import (
 	"alukart32.com/langcore/internal/function"
 	"alukart32.com/langcore/internal/scope"
 	"alukart32.com/langcore/internal/types"
-	"alukart32.com/langcore/tools"
+	"alukart32.com/tools"
 )
 
-var topicConsoleLogger = tools.ConsoleLogger{Format: "\n%s\n%s", Spliter: "==================================\n"}
-var subTopicConsoleLogger = tools.ConsoleLogger{Format: "%s %s\n", Spliter: "::\n"}
-
 func main() {
-	topicConsoleLogger.Log("Basic Types")
-	subTopicConsoleLogger.Log("Get uintSizes and int size")
+	tools.TopicConsoleLogger.Log("Basic Types")
+	tools.SubTopicConsoleLogger.Log("Get uintSizes and int size")
 	types.IntSizeBits()
-	subTopicConsoleLogger.Log("Float point values")
+	tools.SubTopicConsoleLogger.Log("Float point values")
 	types.FpValues()
-	subTopicConsoleLogger.Log("Float point hex values")
+	tools.SubTopicConsoleLogger.Log("Float point hex values")
 	types.FpHexValues()
-	subTopicConsoleLogger.Log("Rune values")
+	tools.SubTopicConsoleLogger.Log("Rune values")
 	types.RuneValues()
-	subTopicConsoleLogger.Log("String values")
+	tools.SubTopicConsoleLogger.Log("String values")
 	types.StringValues()
 	// const
-	subTopicConsoleLogger.Log("Const values")
+	tools.SubTopicConsoleLogger.Log("Const values")
 	types.ConstValues()
 	types.UntypedNamedConst()
 	// var scopes
-	subTopicConsoleLogger.Log("Scopes values")
+	tools.SubTopicConsoleLogger.Log("Scopes values")
 	scope.Scopes()
 
-	topicConsoleLogger.Log("Control flow")
+	tools.TopicConsoleLogger.Log("Control flow")
 	// if-else
-	subTopicConsoleLogger.Log("IF-ELSE")
+	tools.SubTopicConsoleLogger.Log("IF-ELSE")
 	controlflow.IfElse()
 	controlflow.IfElseAndRand()
 	controlflow.IfElseDayTimeRange()
 	// for
-	subTopicConsoleLogger.Log("FOR")
+	tools.SubTopicConsoleLogger.Log("FOR")
 	controlflow.ForBaseForm()
 	controlflow.ForCountDown()
 	controlflow.ForBreak()
 	controlflow.ForContinue()
 	// switch
-	subTopicConsoleLogger.Log("SWITCH")
+	tools.SubTopicConsoleLogger.Log("SWITCH")
 	controlflow.SwitchBaseForm()
 	controlflow.SwitchModN()
 	controlflow.SwitchFallthrough()
 	// goto
-	subTopicConsoleLogger.Log("GOTO")
+	tools.SubTopicConsoleLogger.Log("GOTO")
 	controlflow.GoToInc()
 	controlflow.GoTofindSmallestPrimeLargerThan()
 
-	topicConsoleLogger.Log("FUNCTIONS")
+	tools.TopicConsoleLogger.Log("FUNCTIONS")
 	// anonymous func
-	subTopicConsoleLogger.Log("Anonymous functions")
+	tools.SubTopicConsoleLogger.Log("Anonymous functions")
 	function.AnonymousFunc()
-	subTopicConsoleLogger.Log("Variadic functions")
+	tools.SubTopicConsoleLogger.Log("Variadic functions")
 	println("Variadic function Sum call: ", function.Sum(1, 5, 87))
-	subTopicConsoleLogger.Log("Fucntion Value")
+	tools.SubTopicConsoleLogger.Log("Fucntion Value")
 	function.FuncValue()
 
 	// container types
-	topicConsoleLogger.Log("CONTAINER TYPES: array, slice, map")
+	tools.TopicConsoleLogger.Log("CONTAINER TYPES: array, slice, map")
 	types.ContainerTypeDeclaration()
 	types.ArraySliceCompositeliterals()
 	types.GetPointerFromContainerType()
@@ -79,7 +76,7 @@ func main() {
 
 	// slices
 	//types.Reslicing()
-	subTopicConsoleLogger.Log("SLICE")
+	tools.SubTopicConsoleLogger.Log("SLICE")
 	types.CopySlices()
 	types.RangeOverArrayModificationHasNoEffects()
 	types.RangeOverSliceModificationHasEffects()
@@ -89,37 +86,42 @@ func main() {
 	types.IndexArrayElementWithPointer()
 	types.DeriveSlicesFromArrayPointer()
 
-	subTopicConsoleLogger.Log("SLICE: delete elems by condition")
+	tools.SubTopicConsoleLogger.Log("SLICE: delete elems by condition")
 	isNumeralNegativeOrZero := func(n int) bool {
 		return !(n <= 0)
 	}
 	types.DeleteElements([]int{1, -1, 2, -2, 3, 0}, isNumeralNegativeOrZero, true)
 
-	subTopicConsoleLogger.Log("SLICE: stack operations")
+	tools.SubTopicConsoleLogger.Log("SLICE: stack operations")
 	types.StackOper()
 
 	// String
-	topicConsoleLogger.Log("STRING type")
+	tools.TopicConsoleLogger.Log("STRING type")
 	types.Strings()
-	subTopicConsoleLogger.Log("STRING operations")
+	tools.SubTopicConsoleLogger.Log("STRING operations")
 	types.StringOper()
 	types.StringLen()
-	subTopicConsoleLogger.Log("STRING: conversion between ByteSlice & RuneSlice")
+	tools.SubTopicConsoleLogger.Log("STRING: conversion between ByteSlice & RuneSlice")
 	types.StringConversionByteSliceToRune()
 
 	// Struct
-	topicConsoleLogger.Log("STRUCT type")
-	subTopicConsoleLogger.Log("Book struct type example")
+	tools.TopicConsoleLogger.Log("STRUCT type")
+	tools.SubTopicConsoleLogger.Log("Book struct type example")
 	types.BookStructExample()
 
 	//Interfaces
-	topicConsoleLogger.Log("INTERFACE type")
-	subTopicConsoleLogger.Log("INTERFACE: value boxing")
+	tools.TopicConsoleLogger.Log("INTERFACE type")
+	tools.SubTopicConsoleLogger.Log("INTERFACE: value boxing")
 	types.InterfacesBoxing()
-	subTopicConsoleLogger.Log("INTERFACE: value boxing into blank interface")
+	tools.SubTopicConsoleLogger.Log("INTERFACE: value boxing into blank interface")
 	types.BoxingValuesWithBlankInterface()
 
 	// Interfaces Polymorphism
-	topicConsoleLogger.Log("INTERFACE: Polymorphism")
+	tools.TopicConsoleLogger.Log("INTERFACE: Polymorphism")
 	types.Polymorphism()
+
+	tools.SubTopicConsoleLogger.Log("INTERFACE: type assertion")
+	types.InterfaceTypeAssertion1()
+	types.InterfaceTypeAssertion2()
+	types.InterfceTypeSwitch()
 }
