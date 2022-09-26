@@ -7,6 +7,7 @@ import (
 	controlflow "alukart32.com/langcore/internal/controlFlow"
 	"alukart32.com/langcore/internal/function"
 	"alukart32.com/langcore/internal/scope"
+	"alukart32.com/langcore/internal/sync/ch"
 	"alukart32.com/langcore/internal/types"
 	"alukart32.com/tools"
 )
@@ -124,4 +125,39 @@ func main() {
 	types.InterfaceTypeAssertion1()
 	types.InterfaceTypeAssertion2()
 	types.InterfceTypeSwitch()
+
+	// Sync
+	tools.TopicConsoleLogger.Log("SYNC")
+	// Channels
+	tools.SubTopicConsoleLogger.Log("CHANNELS: type")
+	ch.ChannelTypes()
+	tools.SubTopicConsoleLogger.Log("CHANNELS: operations")
+	ch.ChannelOperations()
+
+	tools.SubTopicConsoleLogger.Log("CHANNELS: talking")
+	ch.ChannelTalking()
+
+	tools.SubTopicConsoleLogger.Log("CHANNELS: print msg")
+	ch.ChannelPrintMsg()
+
+	tools.SubTopicConsoleLogger.Log("CHANNELS: for loop")
+	ch.ChannelForLoopEvaluation()
+
+	tools.SubTopicConsoleLogger.Log("CHANNELS: buffered")
+	ch.ChannelBuffered()
+
+	tools.SubTopicConsoleLogger.Log("CHANNELS: never stopped action")
+	//ch.ChannelNeverEndingAction()
+
+	tools.SubTopicConsoleLogger.Log("CHANNELS: return receive-only channels as results")
+	ch.ChannelReturnReceiveOnlyResult()
+
+	tools.SubTopicConsoleLogger.Log("CHANNELS: pass send-only channels as arguments")
+	ch.ChannelPassSendOnly()
+
+	tools.SubTopicConsoleLogger.Log("CHANNELS: the first response wins")
+	ch.ChannelFirstResponseWins()
+
+	tools.SubTopicConsoleLogger.Log("CHANNELS: with sync.WaitGroup")
+	ch.ChannelGenerateAndPrintNumbers()
 }
